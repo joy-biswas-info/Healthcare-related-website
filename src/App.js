@@ -1,15 +1,18 @@
 import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
 import './App.css';
-import NotFound404 from './Components/404/NotFound404';
-import Blog from './Components/Blog/Blog';
+import Home from './Components/Pages/Home/Home';
+import NotFound404 from './Components/Pages/404/NotFound404';
+import Blog from './Components/Pages/Blog/Blog';
+import LogIn from './Components/Pages/LogIn/LogIn';
 import Header from './Components/Header/Header';
-import Home from './Components/Home/Home';
-import LogIn from './Components/LogIn/LogIn';
+import AuthProvider from './contexts/AuthProvider';
+
 
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
         <Header></Header>
         <Switch>
@@ -19,8 +22,8 @@ function App() {
           <Route path="/home">
             <Home></Home>
           </Route>
-          <Route to="/blog">
-          <Blog></Blog>
+          <Route path="/blog">
+            <Blog></Blog>
           </Route>
           <Route path="/login">
             <LogIn></LogIn>
@@ -30,6 +33,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      </AuthProvider>
     </div>
   );
 }
