@@ -1,22 +1,27 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import useAuth from '../../Hooks/useAuth';
 import Register from '../../Register/Register';
 import "./LogIn.css"
 
 const LogIn = () => {
-    const {signInUsingGoogle,user,logOut}=useAuth()
+    const { signInUsingGoogle, user, logOut } = useAuth()
     return (
         <div>
-            <Image fluid src={user.photoURL}/>
-            <h2>Welcome {user.displayName}</h2>
-            {user.email?  
-            <Button variant="danger" onClick={logOut}>Log Out</Button>
-            :
-            <Button varient="primary" onClick={signInUsingGoogle}>Google login</Button>
+            <Container>
+            {user.email ?
+                <div>
+                    <Image fluid src={user.photoURL} />
+                    <h2>Welcome {user.displayName}</h2>
+                    <Button variant="danger" onClick={logOut}>Log Out</Button>
+                </div> :
+                <div>
+                    <Register></Register>
+                    <Button varient="primary" onClick={signInUsingGoogle}>Google login</Button>
+                </div>
             }
-            <Register></Register>
+            </Container>
         </div>
     );
 };

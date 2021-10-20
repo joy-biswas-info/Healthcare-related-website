@@ -7,6 +7,10 @@ import Blog from './Components/Pages/Blog/Blog';
 import LogIn from './Components/Pages/LogIn/LogIn';
 import Header from './Components/Header/Header';
 import AuthProvider from './contexts/AuthProvider';
+import Booking from './Components/Pages/Booking/Booking';
+import PrivetRoute from './Components/Pages/LogIn/PrivetRoute/PrivetRoute';
+import Contact from './Components/Pages/Contact/Contact';
+import Footer from './Components/Footer/Footer';
 
 
 
@@ -20,7 +24,7 @@ function App() {
           <Route exact path='/'>
           <Home></Home>
           </Route>
-          <Route path="/home">
+          <Route exat path="/home">
             <Home></Home>
           </Route>
           <Route path="/blog">
@@ -29,10 +33,17 @@ function App() {
           <Route path="/login">
             <LogIn></LogIn>
           </Route>
+          <PrivetRoute path="/booking/:serviceId">
+          <Booking></Booking>
+          </PrivetRoute>
+          <Route path="/contact">
+            <Contact></Contact>
+          </Route>
           <Route path="*">
           <NotFound404></NotFound404>
           </Route>
         </Switch>
+      <Footer></Footer>
       </Router>
       </AuthProvider>
     </div>

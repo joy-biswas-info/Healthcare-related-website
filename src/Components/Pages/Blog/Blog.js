@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import SingleBlog from './SingleBlog/SingleBlog';
+
 
 const Blog = () => {
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        fetch("/posts.json")
+            .then(res => res.json())
+            .then(data => setPosts(data))
+    }, [])
+
     return (
-        <div>
-            This ia Blog
-        </div>
+        <Container className="">
+            <Row className="justify-content-center">
+              {
+                    posts.map(post => <SingleBlog post={post} key={post.id}></SingleBlog>)
+                }
+
+            </Row>
+
+        </Container>
     );
 };
 
