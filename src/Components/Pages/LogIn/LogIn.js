@@ -1,12 +1,14 @@
 import React from 'react';
 import { Container, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import Register from '../../Register/Register';
 import "./LogIn.css"
 
 const LogIn = () => {
-    const { signInUsingGoogle, user, logOut } = useAuth()
+    const { signInUsingGoogle, user, logOut } = useAuth();
+    const history = useHistory();
     return (
         <div>
             <Container>

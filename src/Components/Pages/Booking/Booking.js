@@ -6,7 +6,6 @@ const Booking = () => {
     const { serviceId } = useParams();
     const [detailes, setDetailes] = useState([]);
     const [singleDetailes, setSingleDetailes] = useState({});
-    // console.log(serviceId);
 
     useEffect(() => {
         fetch("/servicesDetails.json")
